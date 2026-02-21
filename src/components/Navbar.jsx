@@ -1,15 +1,4 @@
-import {
-    AppBar,
-    Toolbar,
-    Typography,
-    IconButton,
-    Badge,
-    Box,
-    InputBase,
-    Drawer,
-    Button,
-    Divider,
-} from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton, Badge, Box, InputBase, Drawer, Button, Divider, } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
@@ -17,18 +6,31 @@ import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import AuthModal from "./AuthModal";
 import { useNavigate } from "react-router-dom";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const { user, logout } = useAuth();
     const [authOpen, setAuthOpen] = useState(false);
-    const navigate = useNavigate();
     const [search, setSearch] = useState("");
+    const navigate = useNavigate();
     const { totalItems = 0, cartItems = [] } = useCart();
     const totalPrice = cartItems.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     );
+    const [anchorEl, setAnchorEl] = useState(null);
+    const openMenu = Boolean(anchorEl);
+
+    const handleMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <>
             <AppBar position="sticky" sx={{ bgcolor: "#131921" }}>
@@ -95,29 +97,54 @@ export default function Navbar() {
                         </IconButton>
                     </Box>
                     {user ? (
-                        <Button
-                            color="inherit"
-                            onClick={logout}
-                            sx={{
-                                textTransform: "none",
-                                fontSize: 13,
-                            }}
-                        >
-                            Hello, {user.email}
-                        </Button>
+                        <>
+                            <Button
+                                color="inherit"
+                                onClick={handleMenuOpen}
+                                startIcon={<AccountCircle />}
+                                sx={{ textTransform: "none" }}
+                            >
+                                Hello, {user.email}
+                            </Button>
+
+                            <Menu
+                                anchorEl={anchorEl}
+                                open={openMenu}
+                                onClose={handleMenuClose}
+                            >
+                                <MenuItem onClick={() => { navigate("/orders"); handleMenuClose(); }}>
+                                    My Orders
+                                </MenuItem>
+
+                                <MenuItem onClick={() => { navigate("/admin"); handleMenuClose(); }}>
+                                    Admin Dashboard
+                                </MenuItem>
+
+                                <MenuItem onClick={() => { logout(); handleMenuClose(); }}>
+                                    Logout
+                                </MenuItem>
+                            </Menu>
+                        </>
                     ) : (
-                        <Button
-                            color="inherit"
-                            onClick={() => setAuthOpen(true)}
-                            sx={{ textTransform: "none" }}
-                        >
+                        <Button color="inherit" onClick={() => setAuthOpen(true)}>
                             Sign In
                         </Button>
                     )}
+
+
                     <IconButton color="inherit" onClick={() => setOpen(true)}>
-                        <Badge badgeContent={totalItems} color="warning">
+                        <Badge
+                            badgeContent={totalItems}
+                            color="warning"
+                            sx={{
+                                "& .MuiBadge-badge": {
+                                    animation: totalItems ? "pulse 0.6s ease" : "none"
+                                }
+                            }}
+                        >
                             <ShoppingCartIcon />
                         </Badge>
+
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -172,6 +199,15 @@ export default function Navbar() {
                     <Button
                         variant="contained"
                         fullWidth
+                        onClick={() => {
+                            setOpen(false);
+                            if (!user) {
+                                setAuthOpen(true);
+                            } else {
+                                navigate("/checkout");
+                            }
+                        }}
+
                         sx={{
                             bgcolor: "#febd69",
                             color: "black",
