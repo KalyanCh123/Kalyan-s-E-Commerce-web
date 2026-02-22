@@ -8,7 +8,6 @@ export default function ForgotPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const cleanEmail = email.toLowerCase().trim();
         const user = users.find((u) => u.email === cleanEmail);

@@ -6,9 +6,7 @@ import jsPDF from "jspdf";
 export default function Orders() {
     const { user } = useAuth();
     const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
-    const userOrders = allOrders.filter(
-        (order) => order.userEmail === user?.email
-    );
+    const userOrders = allOrders.filter( (order) => order.userEmail === user?.email );
     const steps = ["Placed", "Processing", "Shipped", "Delivered"];
     const downloadInvoice = (order) => {
         const doc = new jsPDF();

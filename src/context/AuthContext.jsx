@@ -14,12 +14,8 @@ export function AuthProvider({ children }) {
 
   const register = (email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
     const cleanEmail = email.toLowerCase().trim();
-
-    const existingUser = users.find(
-      (u) => u.email === cleanEmail
-    );
+    const existingUser = users.find( (u) => u.email === cleanEmail );
 
     if (existingUser) {
       return { success: false, message: "Email already registered" };
@@ -31,25 +27,16 @@ export function AuthProvider({ children }) {
     };
 
     const updatedUsers = [...users, newUser];
-
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     localStorage.setItem("loggedUser", JSON.stringify(newUser));
-
     setUser(newUser);
-
     return { success: true };
   };
 
   const login = (email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
     const cleanEmail = email.toLowerCase().trim();
-
-    const existingUser = users.find(
-      (u) =>
-        u.email === cleanEmail &&
-        u.password === password
-    );
+    const existingUser = users.find( (u) => u.email === cleanEmail && u.password === password );
 
     if (!existingUser) {
       return { success: false, message: "Invalid credentials" };

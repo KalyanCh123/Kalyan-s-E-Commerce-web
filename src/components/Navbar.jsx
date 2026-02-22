@@ -17,10 +17,7 @@ export default function Navbar() {
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
     const { totalItems = 0, cartItems = [] } = useCart();
-    const totalPrice = cartItems.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-    );
+    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     const [anchorEl, setAnchorEl] = useState(null);
     const openMenu = Boolean(anchorEl);
 
@@ -31,6 +28,7 @@ export default function Navbar() {
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <>
             <AppBar position="sticky" sx={{ bgcolor: "#131921" }}>
@@ -106,7 +104,6 @@ export default function Navbar() {
                             >
                                 Hello, {user.email}
                             </Button>
-
                             <Menu
                                 anchorEl={anchorEl}
                                 open={openMenu}
@@ -115,11 +112,9 @@ export default function Navbar() {
                                 <MenuItem onClick={() => { navigate("/orders"); handleMenuClose(); }}>
                                     My Orders
                                 </MenuItem>
-
                                 <MenuItem onClick={() => { navigate("/admin"); handleMenuClose(); }}>
                                     Admin Dashboard
                                 </MenuItem>
-
                                 <MenuItem onClick={() => { logout(); handleMenuClose(); }}>
                                     Logout
                                 </MenuItem>
@@ -130,8 +125,6 @@ export default function Navbar() {
                             Sign In
                         </Button>
                     )}
-
-
                     <IconButton color="inherit" onClick={() => setOpen(true)}>
                         <Badge
                             badgeContent={totalItems}
@@ -144,7 +137,6 @@ export default function Navbar() {
                         >
                             <ShoppingCartIcon />
                         </Badge>
-
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -161,13 +153,11 @@ export default function Navbar() {
                     <Typography variant="h6" gutterBottom>
                         Shopping Cart
                     </Typography>
-
                     <Divider sx={{ mb: 2 }} />
                     <Box sx={{ flexGrow: 1, overflowY: "auto" }}>
                         {cartItems.length === 0 && (
                             <Typography>No items added</Typography>
                         )}
-
                         {cartItems.map((item) => (
                             <Box
                                 key={item.id}
@@ -207,7 +197,6 @@ export default function Navbar() {
                                 navigate("/checkout");
                             }
                         }}
-
                         sx={{
                             bgcolor: "#febd69",
                             color: "black",

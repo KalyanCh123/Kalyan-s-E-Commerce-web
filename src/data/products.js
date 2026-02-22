@@ -18,8 +18,7 @@ const products = [
     rating: 4.8,
     reviews: 342,
     sale: true,
-    description:
-      "The latest iPhone 15 Pro with A17 chip, titanium body, and advanced camera system.",
+    description: "The latest iPhone 15 Pro with A17 chip, titanium body, and advanced camera system.",
     reviewList: [
       { rating: 5, comment: "Amazing performance and camera quality!" },
       { rating: 4, comment: "Battery life is solid and display is beautiful." }
@@ -44,8 +43,7 @@ const products = [
     ],
     rating: 4.6,
     reviews: 210,
-    description:
-      "Flagship Galaxy S24 with stunning AMOLED display and powerful processor.",
+    description: "Flagship Galaxy S24 with stunning AMOLED display and powerful processor.",
     reviewList: [
       { rating: 5, comment: "Best Android phone right now." },
       { rating: 4, comment: "Great camera and smooth UI." }
@@ -71,8 +69,7 @@ const products = [
     ],
     rating: 4.5,
     reviews: 180,
-    description:
-      "High-performance gaming laptop with RTX graphics and 16GB RAM.",
+    description: "High-performance gaming laptop with RTX graphics and 16GB RAM.",
     reviewList: [
       { rating: 5, comment: "Runs all AAA games smoothly!" },
       { rating: 4, comment: "Powerful but slightly heavy." }
@@ -98,8 +95,7 @@ const products = [
     ],
     rating: 4.7,
     reviews: 260,
-    description:
-      "Lightweight running shoes designed for comfort and durability.",
+    description: "Lightweight running shoes designed for comfort and durability.",
     reviewList: [
       { rating: 5, comment: "Super comfortable for long runs." },
       { rating: 4, comment: "Very breathable material." }
@@ -119,8 +115,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1580894908361-967195033215",
     rating: 4.4,
     reviews: 150,
-    description:
-      "Wireless Bluetooth headphones with noise cancellation feature.",
+    description: "Wireless Bluetooth headphones with noise cancellation feature.",
     reviewList: [
       { rating: 5, comment: "Sound quality is amazing!" }
     ]
@@ -138,8 +133,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
     rating: 4.2,
     reviews: 134,
-    description:
-      "Smartwatch with heart rate monitor and fitness tracking features.",
+    description: "Smartwatch with heart rate monitor and fitness tracking features.",
     reviewList: [
       { rating: 4, comment: "Good fitness tracking features." }
     ]

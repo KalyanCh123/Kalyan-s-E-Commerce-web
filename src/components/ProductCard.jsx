@@ -1,17 +1,4 @@
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Rating,
-  Box,
-  Chip
-} from "@mui/material";
+import { Card, CardMedia, CardContent, Typography, Button, Dialog, DialogTitle, DialogContent, DialogActions, Rating, Box, Chip } from "@mui/material";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
@@ -21,8 +8,6 @@ import { motion } from "framer-motion";
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const navigate = useNavigate();
-
-  const [open, setOpen] = useState(false);
   const [quickOpen, setQuickOpen] = useState(false);
 
   const handleAddToCart = (e) => {
@@ -51,7 +36,6 @@ export default function ProductCard({ product }) {
             }
           }}
         >
-          {/* 🔥 SALE BADGE */}
           {product.sale && (
             <Chip
               label="SALE"
@@ -65,8 +49,6 @@ export default function ProductCard({ product }) {
               }}
             />
           )}
-
-          {/* IMAGE WITH ZOOM */}
           <Box sx={{ overflow: "hidden" }}>
             <CardMedia
               component="img"
@@ -80,28 +62,22 @@ export default function ProductCard({ product }) {
               }}
             />
           </Box>
-
           <CardContent>
             <Typography variant="h6" fontWeight={600}>
               {product.title}
             </Typography>
-
             <Rating
               value={product.rating}
               precision={0.5}
               readOnly
               size="small"
             />
-
             <Typography variant="body2" color="text.secondary">
               ({product.reviews} reviews)
             </Typography>
-
             <Typography fontWeight="bold" sx={{ my: 1 }}>
               ${product.price}
             </Typography>
-
-            {/* BUTTONS */}
             <Button
               fullWidth
               variant="contained"
@@ -115,7 +91,6 @@ export default function ProductCard({ product }) {
             >
               Add to Cart
             </Button>
-
             <Button
               fullWidth
               variant="outlined"
@@ -126,8 +101,6 @@ export default function ProductCard({ product }) {
             >
               Buy Now
             </Button>
-
-            {/* QUICK VIEW BUTTON */}
             <Button
               fullWidth
               size="small"
@@ -142,8 +115,6 @@ export default function ProductCard({ product }) {
           </CardContent>
         </Card>
       </motion.div>
-
-      {/* QUICK VIEW MODAL */}
       <Dialog open={quickOpen} onClose={() => setQuickOpen(false)}>
         <DialogTitle>{product.title}</DialogTitle>
         <DialogContent>

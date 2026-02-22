@@ -3,13 +3,9 @@ import { Box, Typography, Card, CardContent, Button, MenuItem, Select, Divider, 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function Admin() {
-    const [orders, setOrders] = useState(
-        JSON.parse(localStorage.getItem("orders")) || []
-    );
+    const [orders, setOrders] = useState(JSON.parse(localStorage.getItem("orders")) || []);
     const updateStatus = (id, newStatus) => {
-        const updated = orders.map((o) =>
-            o.id === id ? { ...o, status: newStatus } : o
-        );
+        const updated = orders.map((o) => o.id === id ? { ...o, status: newStatus } : o);
         setOrders(updated);
         localStorage.setItem("orders", JSON.stringify(updated));
     };
@@ -19,9 +15,7 @@ export default function Admin() {
         localStorage.setItem("orders", JSON.stringify(updated));
     };
     const totalSales = orders.reduce((sum, o) => sum + o.total, 0);
-    const chartData = [
-        { name: "Total Sales", value: totalSales },
-    ];
+    const chartData = [{ name: "Total Sales", value: totalSales },];
 
     return (
         <Box sx={{ p: 4 }}>
@@ -77,7 +71,6 @@ export default function Admin() {
             ))}
             <Box sx={{ mt: 6 }}>
                 <Typography variant="h5">Sales Analytics</Typography>
-
                 <BarChart width={600} height={300} data={orders}>
                     <XAxis dataKey="id" />
                     <YAxis />
@@ -85,7 +78,6 @@ export default function Admin() {
                     <Bar dataKey="total" />
                 </BarChart>
             </Box>
-
         </Box>
     );
 }

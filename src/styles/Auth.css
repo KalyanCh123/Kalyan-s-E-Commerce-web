@@ -294,24 +294,20 @@
   max-width: 1200px !important;
   margin: auto !important;
 }
-
 .product-details-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
   gap: 50px !important;
 }
-
 .image-section {
   display: flex !important;
   gap: 20px !important;
 }
-
 .thumbnail-list {
   display: flex !important;
   flex-direction: column !important;
   gap: 10px !important;
 }
-
 .thumbnail {
   width: 60px !important;
   cursor: pointer !important;
@@ -319,25 +315,20 @@
   padding: 5px !important;
   transition: 0.3s !important;
 }
-
 .thumbnail:hover {
   border: 1px solid #000 !important;
 }
-
 .main-image-wrapper {
   position: relative !important;
   overflow: hidden !important;
 }
-
 .main-image {
   width: 400px !important;
   transition: transform 0.3s ease !important;
 }
-
 .main-image:hover {
   transform: scale(1.4) !important;
 }
-
 .discount-badge {
   position: absolute !important;
   top: 10px !important;
@@ -348,23 +339,19 @@
   font-weight: bold !important;
   border-radius: 4px !important;
 }
-
 .price-section {
   margin: 15px 0 !important;
 }
-
 .original-price {
   text-decoration: line-through !important;
   margin-right: 10px !important;
   color: gray !important;
 }
-
 .price {
   font-size: 24px !important;
   font-weight: bold !important;
   color: #b12704 !important;
 }
-
 .add-to-cart-btn {
   padding: 12px 20px !important;
   background: #ffd814 !important;
@@ -374,22 +361,18 @@
   border-radius: 6px !important;
   transition: 0.3s !important;
 }
-
 .add-to-cart-btn:hover {
   background: #f7ca00 !important;
   transform: scale(1.03) !important;
 }
-
 .related-section {
   margin-top: 60px !important;
 }
-
 .related-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
   gap: 20px !important;
 }
-
 .related-card {
   border: 1px solid #ddd !important;
   padding: 15px !important;
@@ -398,7 +381,6 @@
   transition: 0.3s !important;
   border-radius: 8px !important;
 }
-
 .related-card:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
   transform: translateY(-5px) !important;
