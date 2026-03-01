@@ -41,7 +41,6 @@ export default function Login() {
           <div className="input-group password-group">
             <label>Password</label>
             <div className="password-wrapper">
-              <FormControl fullWidth>
               <input
                 type={showPassword ? "text" : "password"}
                 required
@@ -55,7 +54,6 @@ export default function Login() {
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
-              </FormControl>
             </div>
           </div>
           <div className="forgot-row">
