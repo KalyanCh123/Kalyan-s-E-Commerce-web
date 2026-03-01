@@ -69,10 +69,10 @@ export default function Register() {
                 setError("");
               }}
             />
-            <span
+             <span
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
-            >
+            > 
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>

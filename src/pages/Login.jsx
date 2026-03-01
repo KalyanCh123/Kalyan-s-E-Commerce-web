@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/Auth.css";
+import { FormControl } from "@mui/material";
 
 export default function Login() {
   const { login } = useAuth();
@@ -39,18 +40,23 @@ export default function Login() {
           </div>
           <div className="input-group password-group">
             <label>Password</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              required
-              placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <span
-              className="toggle-password"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+            <div className="password-wrapper">
+              <FormControl fullWidth>
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className="toggle-password"
+                onClick={() => setShowPassword(prev => !prev)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+              </FormControl>
+            </div>
           </div>
           <div className="forgot-row">
             <Link to="/forgot">Forgot Password?</Link>
