@@ -17,7 +17,12 @@ export default function Navbar() {
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
     const { totalItems = 0, cartItems = [] } = useCart();
-    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    const totalPrice = cartItems.reduce((acc, item) => {
+    const finalPrice = item.discount
+        ? item.price - (item.price * item.discount) / 100
+        : item.price;
+    return acc + finalPrice * item.quantity;
+    }, 0);
     const [anchorEl, setAnchorEl] = useState(null);
     const openMenu = Boolean(anchorEl);
 

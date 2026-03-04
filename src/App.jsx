@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
@@ -18,20 +18,25 @@ import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   const { user } = useAuth();
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState( localStorage.getItem("theme") === "dark" );
+
+  useEffect(() => {
+    if (dark) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [dark]);
 
   return (
-    <div className={dark ? "dark-mode" : ""}>
+    <>
       <button
+        className="theme-toggle"
         onClick={() => setDark(!dark)}
-        style={{
-          position: "fixed",
-          top: 10,
-          right: 10,
-          zIndex: 9999
-        }}
       >
-        {dark ? "Light Mode" : "Dark Mode"}
+        {dark ? "☀ Light" : "🌙 Dark"}
       </button>
       <Routes>
         {!user ? (
@@ -51,13 +56,13 @@ function App() {
             <Route path="/payment" element={<MainLayout><Payment /></MainLayout>} />
             <Route path="/success" element={<MainLayout><Success /></MainLayout>} />
             <Route path="/orders" element={<MainLayout><Orders /></MainLayout>} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<MainLayout><Admin /></MainLayout>} />
+            <Route path="/product/:id" element={<MainLayout><ProductDetails /></MainLayout>} />
             <Route path="*" element={<Navigate to="/" />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
           </>
         )}
       </Routes>
-    </div>
+    </>
   );
 }
 

@@ -6,7 +6,12 @@ export default function Payment() {
     const navigate = useNavigate();
     const { cartItems, clearCart } = useCart();
     const { user } = useAuth();
-    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    const totalPrice = cartItems.reduce((acc, item) => {
+    const finalPrice = item.discount
+        ? item.price - (item.price * item.discount) / 100
+        : item.price;
+    return acc + finalPrice * item.quantity;
+    }, 0);
 
     const generateOrderId = () => {
         const year = new Date().getFullYear();

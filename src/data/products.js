@@ -105,38 +105,50 @@ const products = [
   {
     id: 7,
     title: "Bluetooth Headphones",
-    brand: "Bluetooth",
-    sku: "NKE-006",
+    brand: "Sony",
+    sku: "SONY-BTH-007",
     price: 199,
     originalPrice: 250,
     discount: 20,
     stock: 20,
     category: "Electronics",
-    image: "https://images.unsplash.com/photo-1580894908361-967195033215",
+    sale: true,
+    images: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd",
+      "https://images.unsplash.com/photo-1580894908361-967195033215"
+    ],
     rating: 4.4,
     reviews: 150,
-    description: "Wireless Bluetooth headphones with noise cancellation feature.",
+    description: "Wireless Bluetooth headphones with active noise cancellation.",
     reviewList: [
       { rating: 5, comment: "Sound quality is amazing!" }
-    ]
+    ],
+    related: [3]
   },
   {
     id: 8,
     title: "Smart Watch",
-    brand: "Smart watch",
-    sku: "Watch-1506",
+    brand: "Apple",
+    sku: "APL-WATCH-008",
     price: 250,
     originalPrice: 300,
     discount: 20,
     stock: 20,
     category: "Accessories",
-    image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
+    sale: true,
+    images: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
+      "https://images.unsplash.com/photo-1511732351661-4e66c4d59f1c"
+    ],
     rating: 4.2,
     reviews: 134,
     description: "Smartwatch with heart rate monitor and fitness tracking features.",
     reviewList: [
       { rating: 4, comment: "Good fitness tracking features." }
-    ]
+    ],
+    related: [1]
   }
 ];
 

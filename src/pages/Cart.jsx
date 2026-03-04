@@ -5,7 +5,12 @@ import { Button } from "@mui/material";
 export default function Cart() {
   const { cartItems, removeFromCart, addToCart } = useCart();
   const navigate = useNavigate();
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce((acc, item) => {
+    const finalPrice = item.discount
+      ? item.price - (item.price * item.discount) / 100
+      : item.price;
+    return acc + finalPrice * item.quantity;
+  }, 0);
   if (cartItems.length === 0) {
     return (
       <div className="cart-container">

@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard";
-import { Grid, Button, Box, Slider, Typography, Paper } from "@mui/material";
+import { Grid, Button, Box, Slider, Typography, Paper, Divider } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useWishlist } from "../context/WishlistContext";
 import { useState } from "react";
@@ -21,21 +21,36 @@ export default function Products() {
   });
 
   return (
-    <Box sx={{ display: "flex", p: 4, gap: 4 }}>
+    <Box
+      sx={{
+        display: "flex",
+        gap: 4,
+        px: { xs: 2, md: 6 },
+        py: 4,
+        backgroundColor: "#eaeded",
+        minHeight: "100vh"
+      }}
+    >
       <Paper
+        elevation={3}
         sx={{
-          width: 250,
+          width: 260,
           p: 3,
           height: "fit-content",
           position: "sticky",
-          top: 100
+          top: 100,
+          display: { xs: "none", md: "block" }
         }}
       >
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
           Filters
         </Typography>
-        <Typography gutterBottom>
-          Price Range: ${priceRange[0]} - ${priceRange[1]}
+        <Divider sx={{ mb: 2 }} />
+        <Typography fontSize={14} gutterBottom>
+          Price Range
+        </Typography>
+        <Typography fontSize={13} color="text.secondary" gutterBottom>
+          ${priceRange[0]} - ${priceRange[1]}
         </Typography>
         <Slider
           value={priceRange}
@@ -45,26 +60,52 @@ export default function Products() {
           max={2000}
         />
       </Paper>
-      <Grid container spacing={3} sx={{ flex: 1 }}>
-        {filtered.length === 0 && (
-          <Typography variant="h6">
-            No products found
-          </Typography>
-        )}
-        {filtered.map((product) => (
-          <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <ProductCard product={product} />
-            <Button
-              fullWidth
-              startIcon={<FavoriteIcon />}
-              onClick={() => addToWishlist(product)}
-              sx={{ mt: 1 }}
-            >
-              Add to Wishlist
-            </Button>
+      <Box sx={{ flex: 1 }}>
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          sx={{ mb: 3 }}
+        >
+          {category ? `${category} Products` : "All Products"}
+        </Typography>
+        {filtered.length === 0 ? (
+          <Paper
+            elevation={2}
+            sx={{
+              p: 5,
+              textAlign: "center"
+            }}
+          >
+            <Typography variant="h6" gutterBottom>
+              No products found 😔
+            </Typography>
+            <Typography color="text.secondary">
+              Try adjusting your filters or search term.
+            </Typography>
+          </Paper>
+        ) : (
+          <Grid container spacing={3}>
+            {filtered.map((product) => (
+              <Grid item xs={6} sm={6} md={4} lg={3} key={product.id} >
+                <ProductCard product={product} />
+
+                <Button
+                  fullWidth
+                  startIcon={<FavoriteIcon />}
+                  onClick={() => addToWishlist(product)}
+                  sx={{
+                    mt: 1,
+                    textTransform: "none",
+                    fontWeight: 600
+                  }}
+                >
+                  Add to Wishlist
+                </Button>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        )}
+      </Box>
     </Box>
   );
 }

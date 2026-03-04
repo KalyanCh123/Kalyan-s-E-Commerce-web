@@ -7,6 +7,7 @@ import "../styles/Auth.css";
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
@@ -29,7 +30,7 @@ export default function Register() {
       setError("Password must be at least 6 characters");
       return;
     }
-    const res = register(trimmedEmail, password);
+    const res = register(name, trimmedEmail, password);
     if (!res.success) {
       setError(res.message);
     } else {
@@ -45,6 +46,19 @@ export default function Register() {
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="input-group">
+            <div className="input-group">
+              <label>Full Name</label>
+              <input
+                type="text"
+                required
+                placeholder="Enter your full name"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setError("");
+                }}
+              />
+            </div>
             <label>Email Address</label>
             <input
               type="email"
@@ -69,10 +83,10 @@ export default function Register() {
                 setError("");
               }}
             />
-             <span
+            <span
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
-            > 
+            >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>

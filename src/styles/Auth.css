@@ -1,5 +1,5 @@
 .auth-container {
-  min-height: 100vh !important;
+  min-height: 100vh;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -69,6 +69,26 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   padding-right: 42px !important;
   box-sizing: border-box !important;
 }
+.theme-toggle {
+  position: fixed !important;
+  top: 20px !important;;
+  right: 20px !important;
+  background: linear-gradient(45deg, #111, #333) !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 14px !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  z-index: 9999 !important;
+  transition: all 0.3s ease !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1)  !important;
+  background: linear-gradient(45deg, #333, #555) !important;
+}
+
 .toggle-password {
   position: absolute !important;
   right: 12px !important;
@@ -287,15 +307,42 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   margin-bottom: 25px !important;
   color: #666 !important;
 }
+/* DARK MODE */
 .dark-mode {
-  background: #121212 !important;
-  color: white !important;
+  background-color: #121212;
+  color: #f1f1f1;
 }
+
 .dark-mode .auth-card,
 .dark-mode .checkout-card,
-.dark-mode .payment-card {
-  background: #1e1e1e !important;
+.dark-mode .success-card,
+.dark-mode .payment-card,
+.dark-mode .order-card,
+.dark-mode .admin-card,
+.dark-mode .cart-summary,
+.dark-mode .subtitle,
+.dark-mode .forgot-row a,
+.dark-mode .switch-text a {
+  color: #ddd  !important;
+}
+
+.dark-mode .price {
+  color: #ffb84d !important;
+}
+
+.dark-mode .thumbnail {
+  border: 1px solid #444 !important;
+}
+.dark-mode .cart-item {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background-color: #2a2a2a !important;
   color: white !important;
+  border: 1px solid #444 !important;
 }
 .payment-container,
 .orders-container,
@@ -454,6 +501,18 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   }
   .cart-summary {
     text-align: left !important;
+  }
+  .product-details-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .main-image {
+    width: 100% !important;
+  }
+  .image-section {
+    flex-direction: column !important;
+  }
+  .thumbnail-list {
+    flex-direction: row !important;
   }
 }
 @media (max-width: 480px) {

@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const register = (email, password) => {
+  const register = (name, email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const cleanEmail = email.toLowerCase().trim();
     const existingUser = users.find( (u) => u.email === cleanEmail );
@@ -22,6 +22,7 @@ export function AuthProvider({ children }) {
     }
 
     const newUser = {
+      name,
       email: cleanEmail,
       password,
     };
