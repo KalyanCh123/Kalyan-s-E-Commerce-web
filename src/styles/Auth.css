@@ -130,6 +130,7 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 .auth-btn:hover {
   background: #e9a94e !important;
   transform: translateY(-2px) !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
 .switch-text {
   margin-top: 20px !important;

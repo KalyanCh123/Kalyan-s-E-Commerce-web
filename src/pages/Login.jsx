@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -21,7 +21,10 @@ export default function Login() {
       navigate("/");
     }
   };
-
+  useEffect(() => {
+    setEmail("");
+    setPassword("");
+  }, []);
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -34,11 +37,13 @@ export default function Login() {
             <input
               type="email"
               required
+              autoComplete="off"
               placeholder="Enter your email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="input-group password-group">
+          <div className="input-group">
             <label>Password</label>
             <div className="password-wrapper">
               <input
