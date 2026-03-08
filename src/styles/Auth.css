@@ -18,12 +18,13 @@
 }
 .auth-card h2 {
   margin-bottom: 8px !important;
-  font-size: 26px !important;
-  font-weight: 700 !important;
+  font-size: 30px !important;
+  color: #3f3b3b;
+  font-weight: 800 !important;
 }
 .subtitle {
   font-size: 14px !important;
-  color: #666 !important;
+  color: #333232 !important;
   margin-bottom: 25px !important;
 }
 .input-group {
@@ -32,7 +33,8 @@
   position: relative !important;
 }
 .input-group label {
-  font-size: 14px !important;
+  font-size: 18px !important;
+  color: #524747;
   font-weight: 600 !important;
   margin-bottom: 6px !important;
   display: block !important;
@@ -92,7 +94,7 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 .toggle-password {
   position: absolute !important;
   right: 12px !important;
-  top: 50% !important;
+  top: 70% !important;
   transform: translateY(-50%) !important;
   cursor: pointer !important;
   color: #777 !important;
@@ -131,7 +133,8 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 }
 .switch-text {
   margin-top: 20px !important;
-  font-size: 14px !important;
+  font-size: 18px !important;
+  color: #251e1e;
 }
 .switch-text a {
   color: #2c5364 !important;
@@ -307,7 +310,6 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   margin-bottom: 25px !important;
   color: #666 !important;
 }
-/* DARK MODE */
 .dark-mode {
   background-color: #121212;
   color: #f1f1f1;
@@ -319,30 +321,31 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 .dark-mode .payment-card,
 .dark-mode .order-card,
 .dark-mode .admin-card,
-.dark-mode .cart-summary,
-.dark-mode .subtitle,
-.dark-mode .forgot-row a,
-.dark-mode .switch-text a {
-  color: #ddd  !important;
-}
-
-.dark-mode .price {
-  color: #ffb84d !important;
-}
-
-.dark-mode .thumbnail {
-  border: 1px solid #444 !important;
-}
 .dark-mode .cart-item {
-  background-color: #1e1e1e !important;
-  color: #f1f1f1 !important;
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+.dark-mode .subtitle,
+.dark-mode .cart-summary,
+.dark-mode .switch-text,
+.dark-mode .forgot-row a {
+  color: #bbb;
+}
+.dark-mode a {
+  color: #ffb84d;
+}
+.dark-mode .price {
+  color: #ffb84d;
 }
 
 .dark-mode input,
 .dark-mode textarea {
-  background-color: #2a2a2a !important;
-  color: white !important;
-  border: 1px solid #444 !important;
+  background-color: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+.dark-mode .thumbnail {
+  border: 1px solid #444;
 }
 .payment-container,
 .orders-container,

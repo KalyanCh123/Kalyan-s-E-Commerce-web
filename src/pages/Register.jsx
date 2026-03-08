@@ -45,7 +45,6 @@ export default function Register() {
         <p className="subtitle">Join us today</p>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
             <div className="input-group">
               <label>Full Name</label>
               <input
@@ -58,7 +57,7 @@ export default function Register() {
                   setError("");
                 }}
               />
-            </div>
+            
             <label>Email Address</label>
             <input
               type="email"
