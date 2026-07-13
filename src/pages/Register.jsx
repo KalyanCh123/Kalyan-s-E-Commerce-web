@@ -44,7 +44,7 @@ export default function Register() {
         <h2>Create Account 🚀</h2>
         <p className="subtitle">Join us today</p>
         {error && <p className="error">{error}</p>}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
             <div className="input-group">
               <label>Full Name</label>
               <input
@@ -61,6 +61,7 @@ export default function Register() {
             <label>Email Address</label>
             <input
               type="email"
+              autoComplete="off"
               required
               placeholder="Enter your email"
               value={email}
@@ -75,6 +76,7 @@ export default function Register() {
             <input
               type={showPassword ? "text" : "password"}
               required
+              autoComplete="new-password"
               placeholder="Create password"
               value={password}
               onChange={(e) => {
@@ -94,6 +96,7 @@ export default function Register() {
             <input
               type={showConfirm ? "text" : "password"}
               required
+              autoComplete="new-password"
               placeholder="Confirm password"
               value={confirm}
               onChange={(e) => {

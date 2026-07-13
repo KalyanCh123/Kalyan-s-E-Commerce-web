@@ -1,3 +1,41 @@
+.auth-logo {
+  font-size: 45px  !important;
+  text-align: center !important;
+  margin-bottom: 10px !important;
+}
+
+.password-group {
+  position: relative !important;
+}
+
+.password-group input {
+  width: 100% !important;
+}
+
+.toggle-password {
+  position: absolute !important;
+  right: 15px !important;
+  top: 45px !important;
+  cursor: pointer !important;
+  color: #666 !important;
+}
+
+.toggle-password:hover {
+  color: #1976d2 !important;
+}
+
+.forgot-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin: 10px 0 20px !important;
+}
+
+.error {
+  color: #d32f2f !important;
+  font-size: 14px !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+}
 .auth-container {
   min-height: 100vh;
   display: flex !important;

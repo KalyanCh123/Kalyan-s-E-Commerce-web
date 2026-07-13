@@ -1,17 +1,12 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    if (loggedUser) {
-      setUser(loggedUser);
-    }
-  }, []);
-
+  const [user, setUser] = useState(() => {
+    const loggedUser = localStorage.getItem("loggedUser");
+    return loggedUser ? JSON.parse(loggedUser) : null;
+  });
   const register = (name, email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const cleanEmail = email.toLowerCase().trim();
@@ -54,8 +49,8 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  return (
-    <AuthContext.Provider value={{ user, register, login, logout }}>
+   return (
+    <AuthContext.Provider value={{ user, register, login, logout }} >
       {children}
     </AuthContext.Provider>
   );

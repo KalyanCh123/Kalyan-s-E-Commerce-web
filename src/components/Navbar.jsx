@@ -120,7 +120,7 @@ export default function Navbar() {
                                 <MenuItem onClick={() => { navigate("/admin"); handleMenuClose(); }}>
                                     Admin Dashboard
                                 </MenuItem>
-                                <MenuItem onClick={() => { logout(); handleMenuClose(); }}>
+                                <MenuItem onClick={() => { logout(); handleMenuClose(); navigate("/");}}>
                                     Logout
                                 </MenuItem>
                             </Menu>
